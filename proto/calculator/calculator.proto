@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package = "github.com/andrewlawrence80/grpc-demo/proto/calculator";
+
+message CalcRequest {
+  float num1 = 1;
+  float num2 = 2;
+}
+message CalcResponse { float result = 1; }
+
+service Calculator {
+  rpc Add(CalcRequest) returns (CalcResponse);
+  rpc Subtract(CalcRequest) returns (CalcResponse);
+  rpc Multiply(CalcRequest) returns (CalcResponse);
+  rpc Divide(CalcRequest) returns (CalcResponse);
+}
