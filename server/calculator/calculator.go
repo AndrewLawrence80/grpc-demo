@@ -7,22 +7,22 @@ import (
 	pb "github.com/andrewlawrence80/grpc-demo/proto/calculator"
 )
 
-type CalculatorServer struct {
+type CalculatorServerImpl struct {
 	pb.UnimplementedCalculatorServer
 }
 
-func (CalculatorServer) Add(ctx context.Context, req *pb.CalcRequest) (*pb.CalcResponse, error) {
+func (CalculatorServerImpl) Add(ctx context.Context, req *pb.CalcRequest) (*pb.CalcResponse, error) {
 	return &pb.CalcResponse{Result: req.Num1 + req.Num2}, nil
 }
-func (CalculatorServer) Subtract(ctx context.Context, req *pb.CalcRequest) (*pb.CalcResponse, error) {
+func (CalculatorServerImpl) Subtract(ctx context.Context, req *pb.CalcRequest) (*pb.CalcResponse, error) {
 	return &pb.CalcResponse{Result: req.Num1 - req.Num2}, nil
 
 }
-func (CalculatorServer) Multiply(ctx context.Context, req *pb.CalcRequest) (*pb.CalcResponse, error) {
+func (CalculatorServerImpl) Multiply(ctx context.Context, req *pb.CalcRequest) (*pb.CalcResponse, error) {
 	return &pb.CalcResponse{Result: req.Num1 * req.Num2}, nil
 
 }
-func (CalculatorServer) Divide(ctx context.Context, req *pb.CalcRequest) (*pb.CalcResponse, error) {
+func (CalculatorServerImpl) Divide(ctx context.Context, req *pb.CalcRequest) (*pb.CalcResponse, error) {
 	if req.Num2 == 0 {
 		return nil, fmt.Errorf("division by zero")
 	}
