@@ -7,11 +7,11 @@ import (
 	pbGreeter "github.com/andrewlawrence80/grpc-demo/proto/greeter"
 )
 
-type GreeterServerImpl struct {
+type GreeterServer struct {
 	pbGreeter.UnimplementedGreeterServer
 }
 
-func (s GreeterServerImpl) SayHello(ctx context.Context, request *pbGreeter.HelloRequest) (*pbGreeter.HelloResponse, error) {
+func (s GreeterServer) SayHello(ctx context.Context, request *pbGreeter.HelloRequest) (*pbGreeter.HelloResponse, error) {
 	return &pbGreeter.HelloResponse{
 		Greeting: fmt.Sprintf("Hello %s", request.Name),
 	}, nil
